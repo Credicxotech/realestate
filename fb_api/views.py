@@ -1,0 +1,171 @@
+from django.shortcuts import render
+from rest_framework import status
+from rest_framework.views import APIView 
+import datetime  
+from django.http import HttpResponse
+from rest_framework.response import Response
+from rest_framework.generics import CreateAPIView
+
+from .serializers import GetCookiesSerializer, MyInputSerializer,JoinGrpSerializer
+from .models import api_params,join_grp_api_params
+
+from selenium import webdriver
+from selenium.common import exceptions
+from selenium.webdriver.chrome.options import Options
+from time import sleep, time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+import os,pickle
+import configparser , asyncio
+
+class Fb_Api(CreateAPIView):
+    serializer_class = MyInputSerializer
+    def post(self, request, *args, **kwargs):
+        password = self.request.POST['password']
+        xs = self.request.POST['xs']
+        xs_time = self.request.POST['xs_time']
+        c_user = self.request.POST['c_user']
+        c_user_time = self.request.POST['c_user_time']
+        uuid = self.request.POST['uuid']
+        post_id = self.request.POST['post_id']
+        port = self.request.POST['port']          
+        
+        config = configparser.ConfigParser()
+        config.read(r"./config_files/config_share_post.ini")
+        ip_port = config['ip_port']
+        config_port = ip_port['port']
+       
+        if port=='':
+            IP = '127.0.0.1:{}'.format(config_port)
+        else:
+            IP = '127.0.0.1:{}'.format(port)
+
+        context = {
+            'Status':'Successfull',
+            'Uuid' : uuid,
+                   }
+        try:
+            def post_share_via_url(): 
+                # os.system("python " + "test_share.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP)
+                # os.system("python " + "./bots/share_post.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP)
+                os.system("python3 " + "./bots/share_post.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP)
+            post_share_via_url()
+
+        except:
+            context2 = {'Status':'Failure', 'UUID': uuid}
+            return Response( context2, status=status.HTTP_400_BAD_REQUEST)
+        
+        return Response( context, status=status.HTTP_200_OK)
+
+class Join_grp_api(CreateAPIView):
+    serializer_class = JoinGrpSerializer
+    def post(self, request, *args, **kwargs):
+        password = self.request.POST['password']
+        xs = self.request.POST['xs']
+        xs_time = self.request.POST['xs_time']
+        c_user = self.request.POST['c_user']
+        c_user_time = self.request.POST['c_user_time']
+        uuid = self.request.POST['uuid']
+        user_id = self.request.POST['user_id']
+        grp_list_str = self.request.POST['grp_list']
+        port = self.request.POST['port']
+
+        config = configparser.ConfigParser()
+        config.read(r"./config_files/config_join_grp.ini")
+        ip_port = config['ip_port']
+        config_port = ip_port['port']
+
+        if port=='':
+            IP = '127.0.0.1:{}'.format(config_port)
+        else:
+            IP = '127.0.0.1:{}'.format(port)
+        print(IP)
+
+        def join_groups():
+            # os.system("python " + "./bots/join_grp.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + grp_list_str + " " + password + " " + uuid + " " + IP + " " + user_id)
+            os.system("python3 " + "./bots/join_grp.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + grp_list_str + " " + password + " " + uuid + " " + IP + " " + user_id)
+
+        join_groups()
+
+        context = {
+            'Status':'Successfull',
+            'Uuid' : uuid,
+            'User ID' : user_id
+                   }
+        return Response( context, status=status.HTTP_200_OK)
+
+class GetCookies_api(CreateAPIView):
+    serializer_class = GetCookiesSerializer
+    def post(self, request, *args, **kwargs):
+        api_password = self.request.POST['api_password']
+        username = self.request.POST['username']
+        fb_password = self.request.POST['fb_password']
+
+        ip='127.0.0.1:22225'
+
+        def get_browser():
+            # HEADLESS = False
+            HEADLESS = True
+            sleep(2)
+            chrome_options = Options()
+            if HEADLESS:
+                chrome_options.add_argument('--headless')
+                chrome_options.add_argument('--no-sandbox')
+            chrome_options.add_argument('--disable-dev-shm-usage')
+            chrome_options.add_argument('--log-level=3')
+            chrome_options.add_argument("--start-maximized")
+            chrome_options.add_argument("--disable-gpu")
+            try:
+                chrome_options.add_argument("--proxy-server={}".format(ip))
+            except:
+                print("Proxy error, may be wrong port")
+            chrome_options.add_argument("--disable-notifications")
+            browser = webdriver.Chrome(executable_path= r"/usr/bin/chromedriver" ,options=chrome_options)
+            # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
+            return browser
+                
+        def get_cookies(browser):
+            url = 'https://www.facebook.com/'
+            browser.get(url)
+            sleep(10)
+            browser.find_element_by_xpath('//*[@data-testid="royal_email"]').send_keys(username)
+            sleep(5)
+            browser.find_element_by_xpath('//*[@data-testid="royal_pass"]').send_keys(fb_password)
+            sleep(4)
+
+            browser.find_element_by_xpath('//*[@data-testid="royal_login_button"]').click()
+            sleep(1)
+                    
+            pickle.dump(browser.get_cookies(),open(r"./cookies/zachaiosmyer_cooks.pkl","wb"))
+            print("Cookies Captured.......")
+
+            try:
+                browser.find_element_by_xpath('//*[@aria-label="Menu"]')
+                sleep(3)
+            except:
+                return Response({'Message':'Login was failed'}, status=status.HTTP_404_NOT_FOUND)
+
+        browser = get_browser()
+        browser.get('http://lumtest.com/myip.json')
+        sleep(4)
+        get_cookies(browser)
+        
+        cookies = pickle.load(open(r"./cookies/zachaiosmyer_cooks.pkl","rb"))
+        xs = cookies[1]['value']
+        xs_time = cookies[1]['expiry']
+        c_user = cookies[3]['value']
+        c_user_time = cookies[3]['expiry']
+        cookies = {
+            'XS':xs,
+            'XS_TIME':xs_time,
+            'CUSER':c_user,
+            'CUSER_TIME':c_user_time
+                    }
+        context = {
+            'Status':'Successfull',
+            'Cookies':cookies
+                   }
+        return Response(context,status=status.HTTP_200_OK)
+      
+

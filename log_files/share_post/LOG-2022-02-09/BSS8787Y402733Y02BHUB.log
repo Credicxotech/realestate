@@ -1,0 +1,152 @@
+81 -- 2022-02-09 18:01:48,527 -- DEBUG -- API Call , Starting task. 
+
+98 -- 2022-02-09 18:01:51,534 -- DEBUG -- Initiating Browser
+388 -- 2022-02-09 18:01:54,121 -- DEBUG -- POST http://127.0.0.1:59061/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--disable-dev-shm-usage", "--log-level=3", "--start-maximized", "--disable-gpu", "--disable-notifications"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--disable-dev-shm-usage", "--log-level=3", "--start-maximized", "--disable-gpu", "--disable-notifications"]}}}
+206 -- 2022-02-09 18:01:54,121 -- DEBUG -- Starting new HTTP connection (1): 127.0.0.1
+393 -- 2022-02-09 18:01:55,817 -- DEBUG -- http://127.0.0.1:59061 "POST /session HTTP/1.1" 200 787
+440 -- 2022-02-09 18:01:55,865 -- DEBUG -- Finished Request
+805 -- 2022-02-09 18:01:55,865 -- DEBUG -- Browser Initiated
+388 -- 2022-02-09 18:01:55,865 -- DEBUG -- POST http://127.0.0.1:59061/session/705d56101d821678b44d490ba4cf0e42/url {"url": "http://lumtest.com/myip.json"}
+393 -- 2022-02-09 18:01:57,087 -- DEBUG -- http://127.0.0.1:59061 "POST /session/705d56101d821678b44d490ba4cf0e42/url HTTP/1.1" 200 14
+440 -- 2022-02-09 18:01:57,087 -- DEBUG -- Finished Request
+388 -- 2022-02-09 18:02:01,094 -- DEBUG -- GET http://127.0.0.1:59061/session/705d56101d821678b44d490ba4cf0e42/source {}
+393 -- 2022-02-09 18:02:01,103 -- DEBUG -- http://127.0.0.1:59061 "GET /session/705d56101d821678b44d490ba4cf0e42/source HTTP/1.1" 200 505
+440 -- 2022-02-09 18:02:01,103 -- DEBUG -- Finished Request
+388 -- 2022-02-09 18:02:04,105 -- DEBUG -- POST http://127.0.0.1:59061/session/705d56101d821678b44d490ba4cf0e42/url {"url": "https://www.facebook.com/"}
+393 -- 2022-02-09 18:02:06,368 -- DEBUG -- http://127.0.0.1:59061 "POST /session/705d56101d821678b44d490ba4cf0e42/url HTTP/1.1" 200 14
+440 -- 2022-02-09 18:02:06,368 -- DEBUG -- Finished Request
+122 -- 2022-02-09 18:02:06,368 -- DEBUG -- On Facebook Page.
+149 -- 2022-02-09 18:02:06,368 -- INFO -- Sleeping for 10 secs
+153 -- 2022-02-09 18:02:16,379 -- DEBUG -- Adding Cookies 
+388 -- 2022-02-09 18:02:18,383 -- DEBUG -- POST http://127.0.0.1:59061/session/705d56101d821678b44d490ba4cf0e42/cookie {"cookie": {"domain": ".facebook.com", "expiry": 1675522011, "httpOnly": true, "name": "xs", "path": "/", "sameSite": "None", "secure": true, "value": "20%3AascF4xwaBgWnhw%3A2%3A1643986012%3A-1%3A-1"}}
+393 -- 2022-02-09 18:02:18,399 -- DEBUG -- http://127.0.0.1:59061 "POST /session/705d56101d821678b44d490ba4cf0e42/cookie HTTP/1.1" 200 14
+440 -- 2022-02-09 18:02:18,399 -- DEBUG -- Finished Request
+190 -- 2022-02-09 18:02:18,399 -- DEBUG -- Succesfully added cookie 
+388 -- 2022-02-09 18:02:18,399 -- DEBUG -- POST http://127.0.0.1:59061/session/705d56101d821678b44d490ba4cf0e42/cookie {"cookie": {"domain": ".facebook.com", "expiry": 1675522011, "httpOnly": false, "name": "c_user", "path": "/", "sameSite": "None", "secure": true, "value": "100077306553427"}}
+393 -- 2022-02-09 18:02:18,415 -- DEBUG -- http://127.0.0.1:59061 "POST /session/705d56101d821678b44d490ba4cf0e42/cookie HTTP/1.1" 200 14
+440 -- 2022-02-09 18:02:18,415 -- DEBUG -- Finished Request
+190 -- 2022-02-09 18:02:18,415 -- DEBUG -- Succesfully added cookie 
+220 -- 2022-02-09 18:02:18,415 -- DEBUG -- All cookies added succesfully...
+222 -- 2022-02-09 18:02:19,426 -- DEBUG -- Login was successfull
+230 -- 2022-02-09 18:02:19,426 -- DEBUG -- Refreshing Page
+388 -- 2022-02-09 18:02:19,426 -- DEBUG -- POST http://127.0.0.1:59061/session/705d56101d821678b44d490ba4cf0e42/refresh {}
+393 -- 2022-02-09 18:02:19,474 -- DEBUG -- http://127.0.0.1:59061 "POST /session/705d56101d821678b44d490ba4cf0e42/refresh HTTP/1.1" 200 14
+440 -- 2022-02-09 18:02:19,474 -- DEBUG -- Finished Request
+236 -- 2022-02-09 18:02:23,153 -- WARNING -- Could not refresh browser
+247 -- 2022-02-09 18:02:23,158 -- INFO -- Sleeping for 8 secs
+388 -- 2022-02-09 18:02:31,170 -- DEBUG -- POST http://127.0.0.1:59061/session/705d56101d821678b44d490ba4cf0e42/url {"url": "https://www.facebook.com/1308316196355559"}
+242 -- 2022-02-09 18:02:31,170 -- DEBUG -- Resetting dropped connection: 127.0.0.1
+390 -- 2022-02-09 18:02:33,188 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42/url'): Retry(total=2, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:02:33,188 -- WARNING -- Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B54DF1F0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42/url
+206 -- 2022-02-09 18:02:33,188 -- DEBUG -- Starting new HTTP connection (2): 127.0.0.1
+390 -- 2022-02-09 18:02:35,222 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42/url'): Retry(total=1, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:02:35,222 -- WARNING -- Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B54DF370>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42/url
+206 -- 2022-02-09 18:02:35,222 -- DEBUG -- Starting new HTTP connection (3): 127.0.0.1
+390 -- 2022-02-09 18:02:37,267 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42/url'): Retry(total=0, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:02:37,267 -- WARNING -- Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B54DF760>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42/url
+206 -- 2022-02-09 18:02:37,267 -- DEBUG -- Starting new HTTP connection (4): 127.0.0.1
+265 -- 2022-02-09 18:02:39,305 -- ERROR -- Couldn't fetch url from Post ID
+266 -- 2022-02-09 18:02:40,672 -- CRITICAL -- Couldn't fetch url from Post ID
+388 -- 2022-02-09 18:02:40,688 -- DEBUG -- DELETE http://127.0.0.1:59061/session/705d56101d821678b44d490ba4cf0e42 {}
+206 -- 2022-02-09 18:02:40,688 -- DEBUG -- Starting new HTTP connection (5): 127.0.0.1
+817 -- 2022-02-09 18:02:40,688 -- DEBUG -- Starting new HTTPS connection (1): o425995.ingest.sentry.io
+393 -- 2022-02-09 18:02:41,151 -- DEBUG -- https://o425995.ingest.sentry.io:443 "POST /api/6138760/store/ HTTP/1.1" 200 41
+393 -- 2022-02-09 18:02:41,380 -- DEBUG -- https://o425995.ingest.sentry.io:443 "POST /api/6138760/store/ HTTP/1.1" 200 41
+390 -- 2022-02-09 18:02:42,723 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42'): Retry(total=2, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:02:42,723 -- WARNING -- Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7FF59D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42
+206 -- 2022-02-09 18:02:42,723 -- DEBUG -- Starting new HTTP connection (6): 127.0.0.1
+390 -- 2022-02-09 18:02:44,758 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42'): Retry(total=1, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:02:44,759 -- WARNING -- Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B54DFDF0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42
+206 -- 2022-02-09 18:02:44,759 -- DEBUG -- Starting new HTTP connection (7): 127.0.0.1
+390 -- 2022-02-09 18:02:46,798 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42'): Retry(total=0, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:02:46,799 -- WARNING -- Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7FF56A0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42
+206 -- 2022-02-09 18:02:46,799 -- DEBUG -- Starting new HTTP connection (8): 127.0.0.1
+285 -- 2022-02-09 18:02:52,927 -- DEBUG -- Sleeping for 5 secs 
+388 -- 2022-02-09 18:02:57,931 -- DEBUG -- POST http://127.0.0.1:59061/session/705d56101d821678b44d490ba4cf0e42/element {"using": "xpath", "value": "//span[contains(text(),'Share')]"}
+206 -- 2022-02-09 18:02:57,932 -- DEBUG -- Starting new HTTP connection (9): 127.0.0.1
+390 -- 2022-02-09 18:02:59,982 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42/element'): Retry(total=2, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:02:59,983 -- WARNING -- Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7FF2EE0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42/element
+206 -- 2022-02-09 18:02:59,983 -- DEBUG -- Starting new HTTP connection (10): 127.0.0.1
+390 -- 2022-02-09 18:03:02,025 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42/element'): Retry(total=1, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:02,026 -- WARNING -- Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7FF2FA0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42/element
+206 -- 2022-02-09 18:03:02,027 -- DEBUG -- Starting new HTTP connection (11): 127.0.0.1
+390 -- 2022-02-09 18:03:04,082 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42/element'): Retry(total=0, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:04,083 -- WARNING -- Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7FF2EB0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42/element
+206 -- 2022-02-09 18:03:04,083 -- DEBUG -- Starting new HTTP connection (12): 127.0.0.1
+300 -- 2022-02-09 18:03:06,140 -- ERROR -- Couldn't find share button
+388 -- 2022-02-09 18:03:06,148 -- DEBUG -- DELETE http://127.0.0.1:59061/session/705d56101d821678b44d490ba4cf0e42 {}
+206 -- 2022-02-09 18:03:06,148 -- DEBUG -- Starting new HTTP connection (13): 127.0.0.1
+393 -- 2022-02-09 18:03:06,494 -- DEBUG -- https://o425995.ingest.sentry.io:443 "POST /api/6138760/store/ HTTP/1.1" 200 41
+390 -- 2022-02-09 18:03:08,198 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42'): Retry(total=2, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:08,198 -- WARNING -- Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7FF5040>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42
+206 -- 2022-02-09 18:03:08,198 -- DEBUG -- Starting new HTTP connection (14): 127.0.0.1
+390 -- 2022-02-09 18:03:10,219 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42'): Retry(total=1, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:10,219 -- WARNING -- Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7E374C0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42
+206 -- 2022-02-09 18:03:10,219 -- DEBUG -- Starting new HTTP connection (15): 127.0.0.1
+390 -- 2022-02-09 18:03:12,237 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42'): Retry(total=0, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:12,237 -- WARNING -- Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7FE9F10>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42
+206 -- 2022-02-09 18:03:12,237 -- DEBUG -- Starting new HTTP connection (16): 127.0.0.1
+330 -- 2022-02-09 18:03:14,259 -- ERROR -- Couldn't click share button
+388 -- 2022-02-09 18:03:14,272 -- DEBUG -- DELETE http://127.0.0.1:59061/session/705d56101d821678b44d490ba4cf0e42 {}
+206 -- 2022-02-09 18:03:14,273 -- DEBUG -- Starting new HTTP connection (17): 127.0.0.1
+393 -- 2022-02-09 18:03:14,494 -- DEBUG -- https://o425995.ingest.sentry.io:443 "POST /api/6138760/store/ HTTP/1.1" 200 41
+390 -- 2022-02-09 18:03:16,328 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42'): Retry(total=2, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:16,330 -- WARNING -- Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7FE9E20>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42
+206 -- 2022-02-09 18:03:16,330 -- DEBUG -- Starting new HTTP connection (18): 127.0.0.1
+390 -- 2022-02-09 18:03:18,367 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42'): Retry(total=1, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:18,368 -- WARNING -- Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7FE9F10>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42
+206 -- 2022-02-09 18:03:18,368 -- DEBUG -- Starting new HTTP connection (19): 127.0.0.1
+390 -- 2022-02-09 18:03:20,410 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42'): Retry(total=0, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:20,411 -- WARNING -- Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7FE9D90>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42
+206 -- 2022-02-09 18:03:20,411 -- DEBUG -- Starting new HTTP connection (20): 127.0.0.1
+388 -- 2022-02-09 18:03:22,453 -- DEBUG -- POST http://127.0.0.1:59061/session/705d56101d821678b44d490ba4cf0e42/element {"using": "xpath", "value": "//span[contains(text(),'Share to a group')]"}
+206 -- 2022-02-09 18:03:22,454 -- DEBUG -- Starting new HTTP connection (21): 127.0.0.1
+390 -- 2022-02-09 18:03:24,510 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42/element'): Retry(total=2, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:24,510 -- WARNING -- Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7FE9430>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42/element
+206 -- 2022-02-09 18:03:24,511 -- DEBUG -- Starting new HTTP connection (22): 127.0.0.1
+390 -- 2022-02-09 18:03:26,561 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42/element'): Retry(total=1, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:26,562 -- WARNING -- Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7FE98E0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42/element
+206 -- 2022-02-09 18:03:26,562 -- DEBUG -- Starting new HTTP connection (23): 127.0.0.1
+390 -- 2022-02-09 18:03:28,616 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42/element'): Retry(total=0, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:28,617 -- WARNING -- Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7FE93A0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42/element
+206 -- 2022-02-09 18:03:28,617 -- DEBUG -- Starting new HTTP connection (24): 127.0.0.1
+360 -- 2022-02-09 18:03:30,672 -- ERROR -- Couldn't find the share_to_a_group button
+361 -- 2022-02-09 18:03:30,681 -- CRITICAL -- Might not have logged in with cookies
+388 -- 2022-02-09 18:03:30,692 -- DEBUG -- DELETE http://127.0.0.1:59061/session/705d56101d821678b44d490ba4cf0e42 {}
+206 -- 2022-02-09 18:03:30,693 -- DEBUG -- Starting new HTTP connection (25): 127.0.0.1
+393 -- 2022-02-09 18:03:31,072 -- DEBUG -- https://o425995.ingest.sentry.io:443 "POST /api/6138760/store/ HTTP/1.1" 200 41
+393 -- 2022-02-09 18:03:31,891 -- DEBUG -- https://o425995.ingest.sentry.io:443 "POST /api/6138760/store/ HTTP/1.1" 200 41
+390 -- 2022-02-09 18:03:32,742 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42'): Retry(total=2, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:32,742 -- WARNING -- Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7E7C400>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42
+206 -- 2022-02-09 18:03:32,743 -- DEBUG -- Starting new HTTP connection (26): 127.0.0.1
+390 -- 2022-02-09 18:03:34,798 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42'): Retry(total=1, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:34,799 -- WARNING -- Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7E7C490>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42
+206 -- 2022-02-09 18:03:34,799 -- DEBUG -- Starting new HTTP connection (27): 127.0.0.1
+390 -- 2022-02-09 18:03:36,850 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42'): Retry(total=0, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:36,850 -- WARNING -- Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7E7C3D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42
+206 -- 2022-02-09 18:03:36,851 -- DEBUG -- Starting new HTTP connection (28): 127.0.0.1
+388 -- 2022-02-09 18:03:38,900 -- DEBUG -- POST http://127.0.0.1:59061/session/705d56101d821678b44d490ba4cf0e42/element {"using": "xpath", "value": "//div[contains(@class,'b20td4e0 muag1w35')]"}
+206 -- 2022-02-09 18:03:38,902 -- DEBUG -- Starting new HTTP connection (29): 127.0.0.1
+390 -- 2022-02-09 18:03:40,952 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42/element'): Retry(total=2, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:40,952 -- WARNING -- Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7E7CAC0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42/element
+206 -- 2022-02-09 18:03:40,953 -- DEBUG -- Starting new HTTP connection (30): 127.0.0.1
+390 -- 2022-02-09 18:03:42,995 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42/element'): Retry(total=1, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:42,995 -- WARNING -- Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7E7C700>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42/element
+206 -- 2022-02-09 18:03:42,996 -- DEBUG -- Starting new HTTP connection (31): 127.0.0.1
+390 -- 2022-02-09 18:03:45,045 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42/element'): Retry(total=0, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:45,046 -- WARNING -- Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7E7CA00>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42/element
+206 -- 2022-02-09 18:03:45,046 -- DEBUG -- Starting new HTTP connection (32): 127.0.0.1
+388 -- 2022-02-09 18:03:47,096 -- ERROR -- Couldn't get the list of groups
+388 -- 2022-02-09 18:03:47,107 -- DEBUG -- DELETE http://127.0.0.1:59061/session/705d56101d821678b44d490ba4cf0e42 {}
+206 -- 2022-02-09 18:03:47,107 -- DEBUG -- Starting new HTTP connection (33): 127.0.0.1
+393 -- 2022-02-09 18:03:47,456 -- DEBUG -- https://o425995.ingest.sentry.io:443 "POST /api/6138760/store/ HTTP/1.1" 200 41
+390 -- 2022-02-09 18:03:49,154 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42'): Retry(total=2, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:49,155 -- WARNING -- Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7E370D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42
+206 -- 2022-02-09 18:03:49,155 -- DEBUG -- Starting new HTTP connection (34): 127.0.0.1
+390 -- 2022-02-09 18:03:51,207 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42'): Retry(total=1, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:51,208 -- WARNING -- Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7FF5550>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42
+206 -- 2022-02-09 18:03:51,208 -- DEBUG -- Starting new HTTP connection (35): 127.0.0.1
+390 -- 2022-02-09 18:03:53,258 -- DEBUG -- Incremented Retry for (url='/session/705d56101d821678b44d490ba4cf0e42'): Retry(total=0, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-09 18:03:53,259 -- WARNING -- Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000235B7FF5BB0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/705d56101d821678b44d490ba4cf0e42
+206 -- 2022-02-09 18:03:53,259 -- DEBUG -- Starting new HTTP connection (36): 127.0.0.1
+393 -- 2022-02-09 18:04:00,552 -- DEBUG -- https://o425995.ingest.sentry.io:443 "POST /api/6138760/store/ HTTP/1.1" 200 41

@@ -1,0 +1,101 @@
+83 -- 2022-02-10 19:27:12,852 -- INFO -- API Call , Starting task. 
+
+388 -- 2022-02-10 19:27:18,452 -- DEBUG -- POST http://127.0.0.1:49419/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--disable-dev-shm-usage", "--log-level=3", "--start-maximized", "--disable-gpu", "--disable-notifications"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--disable-dev-shm-usage", "--log-level=3", "--start-maximized", "--disable-gpu", "--disable-notifications"]}}}
+206 -- 2022-02-10 19:27:18,452 -- DEBUG -- Starting new HTTP connection (1): 127.0.0.1
+393 -- 2022-02-10 19:27:19,769 -- DEBUG -- http://127.0.0.1:49419 "POST /session HTTP/1.1" 200 787
+440 -- 2022-02-10 19:27:19,769 -- DEBUG -- Finished Request
+388 -- 2022-02-10 19:27:19,769 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/url {"url": "http://lumtest.com/myip.json"}
+393 -- 2022-02-10 19:27:20,545 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/url HTTP/1.1" 200 14
+440 -- 2022-02-10 19:27:20,545 -- DEBUG -- Finished Request
+388 -- 2022-02-10 19:27:24,546 -- DEBUG -- GET http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/source {}
+393 -- 2022-02-10 19:27:24,607 -- DEBUG -- http://127.0.0.1:49419 "GET /session/da3044a6a791addf3429a26f57e936ec/source HTTP/1.1" 200 471
+440 -- 2022-02-10 19:27:24,607 -- DEBUG -- Finished Request
+388 -- 2022-02-10 19:27:27,608 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/url {"url": "https://www.facebook.com/"}
+393 -- 2022-02-10 19:27:30,677 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/url HTTP/1.1" 200 14
+440 -- 2022-02-10 19:27:30,677 -- DEBUG -- Finished Request
+124 -- 2022-02-10 19:27:30,677 -- INFO -- On Facebook Page.
+151 -- 2022-02-10 19:27:30,677 -- INFO -- Sleeping for 10 secs
+155 -- 2022-02-10 19:27:40,677 -- INFO -- Adding Cookies 
+388 -- 2022-02-10 19:27:42,677 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/cookie {"cookie": {"domain": ".facebook.com", "expiry": 1676030390, "httpOnly": true, "name": "xs", "path": "/", "sameSite": "None", "secure": true, "value": "2%3A-3opfZeu7uSHYg%3A2%3A1644494391%3A-1%3A-1"}}
+393 -- 2022-02-10 19:27:42,709 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/cookie HTTP/1.1" 200 14
+440 -- 2022-02-10 19:27:42,709 -- DEBUG -- Finished Request
+192 -- 2022-02-10 19:27:42,709 -- INFO -- Succesfully added cookie 
+388 -- 2022-02-10 19:27:42,709 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/cookie {"cookie": {"domain": ".facebook.com", "expiry": 1676030390, "httpOnly": false, "name": "c_user", "path": "/", "sameSite": "None", "secure": true, "value": "100077306553427"}}
+393 -- 2022-02-10 19:27:42,725 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/cookie HTTP/1.1" 200 14
+440 -- 2022-02-10 19:27:42,725 -- DEBUG -- Finished Request
+192 -- 2022-02-10 19:27:42,725 -- INFO -- Succesfully added cookie 
+222 -- 2022-02-10 19:27:42,725 -- INFO -- All cookies added succesfully...
+224 -- 2022-02-10 19:27:43,740 -- INFO -- Login was successfull
+232 -- 2022-02-10 19:27:43,740 -- INFO -- Refreshing Page
+388 -- 2022-02-10 19:27:43,740 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/refresh {}
+393 -- 2022-02-10 19:27:43,780 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/refresh HTTP/1.1" 200 14
+440 -- 2022-02-10 19:27:43,780 -- DEBUG -- Finished Request
+249 -- 2022-02-10 19:27:51,787 -- INFO -- Sleeping for 8 secs
+388 -- 2022-02-10 19:27:59,801 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/url {"url": "https://www.facebook.com/1308316196355559"}
+393 -- 2022-02-10 19:28:02,336 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/url HTTP/1.1" 200 14
+440 -- 2022-02-10 19:28:02,336 -- DEBUG -- Finished Request
+259 -- 2022-02-10 19:28:05,336 -- INFO -- Got the Post ID
+287 -- 2022-02-10 19:28:05,336 -- INFO -- Sleeping for 5 secs 
+388 -- 2022-02-10 19:28:10,351 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/element {"using": "xpath", "value": "//span[contains(text(),'Share')]"}
+393 -- 2022-02-10 19:28:10,391 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/element HTTP/1.1" 200 88
+440 -- 2022-02-10 19:28:10,391 -- DEBUG -- Finished Request
+293 -- 2022-02-10 19:28:10,399 -- INFO -- Share_button found 
+388 -- 2022-02-10 19:28:13,412 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/element/0d91fac0-4ce2-4776-99d1-18240ee9749f/click {"id": "0d91fac0-4ce2-4776-99d1-18240ee9749f"}
+393 -- 2022-02-10 19:28:13,644 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/element/0d91fac0-4ce2-4776-99d1-18240ee9749f/click HTTP/1.1" 200 14
+440 -- 2022-02-10 19:28:13,644 -- DEBUG -- Finished Request
+322 -- 2022-02-10 19:28:13,644 -- INFO -- Share_button clicked 
+388 -- 2022-02-10 19:28:18,658 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/element {"using": "xpath", "value": "//span[contains(text(),'Share to a group')]"}
+393 -- 2022-02-10 19:28:18,698 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/element HTTP/1.1" 200 88
+440 -- 2022-02-10 19:28:18,706 -- DEBUG -- Finished Request
+388 -- 2022-02-10 19:28:20,710 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/element/f4129a63-7014-4d46-8cff-5e97f33020f0/click {"id": "f4129a63-7014-4d46-8cff-5e97f33020f0"}
+393 -- 2022-02-10 19:28:21,046 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/element/f4129a63-7014-4d46-8cff-5e97f33020f0/click HTTP/1.1" 200 14
+440 -- 2022-02-10 19:28:21,046 -- DEBUG -- Finished Request
+354 -- 2022-02-10 19:28:21,046 -- INFO -- Share_to_group_button found and clicked
+388 -- 2022-02-10 19:28:25,059 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/element {"using": "xpath", "value": "//div[contains(@class,'b20td4e0 muag1w35')]"}
+393 -- 2022-02-10 19:28:25,099 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/element HTTP/1.1" 200 88
+440 -- 2022-02-10 19:28:25,099 -- DEBUG -- Finished Request
+388 -- 2022-02-10 19:28:28,108 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/element/dbd5be7c-9326-4e4d-b9d1-e1ef1e58eb30/elements {"using": "xpath", "value": "//div[contains(@class,'oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb btwxx1t3 abiwlrkh p8dawk7l lzcic4wl ue3kfks5 pw54ja7n uo3d90p7 l82x9zwi a8c37x1j')]", "id": "dbd5be7c-9326-4e4d-b9d1-e1ef1e58eb30"}
+393 -- 2022-02-10 19:28:28,228 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/element/dbd5be7c-9326-4e4d-b9d1-e1ef1e58eb30/elements HTTP/1.1" 200 1591
+440 -- 2022-02-10 19:28:28,228 -- DEBUG -- Finished Request
+416 -- 2022-02-10 19:28:37,241 -- INFO -- Starting scrolling for all groups
+388 -- 2022-02-10 19:28:39,242 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/execute/sync {"script": "arguments[0].scrollIntoView();", "args": [{"ELEMENT": "6c7cee1c-4c04-4ce1-a915-89c4e14926ac", "element-6066-11e4-a52e-4f735466cecf": "6c7cee1c-4c04-4ce1-a915-89c4e14926ac"}]}
+393 -- 2022-02-10 19:28:39,258 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/execute/sync HTTP/1.1" 200 14
+440 -- 2022-02-10 19:28:39,266 -- DEBUG -- Finished Request
+388 -- 2022-02-10 19:28:44,272 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/element/dbd5be7c-9326-4e4d-b9d1-e1ef1e58eb30/elements {"using": "xpath", "value": "//div[contains(@class,'oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb btwxx1t3 abiwlrkh p8dawk7l lzcic4wl ue3kfks5 pw54ja7n uo3d90p7 l82x9zwi a8c37x1j')]", "id": "dbd5be7c-9326-4e4d-b9d1-e1ef1e58eb30"}
+393 -- 2022-02-10 19:28:44,296 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/element/dbd5be7c-9326-4e4d-b9d1-e1ef1e58eb30/elements HTTP/1.1" 200 2934
+440 -- 2022-02-10 19:28:44,296 -- DEBUG -- Finished Request
+388 -- 2022-02-10 19:28:44,304 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/execute/sync {"script": "arguments[0].scrollIntoView();", "args": [{"ELEMENT": "e16bcc3d-aeef-4a4d-a167-24171e77c706", "element-6066-11e4-a52e-4f735466cecf": "e16bcc3d-aeef-4a4d-a167-24171e77c706"}]}
+393 -- 2022-02-10 19:28:44,312 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/execute/sync HTTP/1.1" 200 14
+440 -- 2022-02-10 19:28:44,312 -- DEBUG -- Finished Request
+388 -- 2022-02-10 19:28:49,323 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/element/dbd5be7c-9326-4e4d-b9d1-e1ef1e58eb30/elements {"using": "xpath", "value": "//div[contains(@class,'oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb btwxx1t3 abiwlrkh p8dawk7l lzcic4wl ue3kfks5 pw54ja7n uo3d90p7 l82x9zwi a8c37x1j')]", "id": "dbd5be7c-9326-4e4d-b9d1-e1ef1e58eb30"}
+393 -- 2022-02-10 19:28:49,347 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/element/dbd5be7c-9326-4e4d-b9d1-e1ef1e58eb30/elements HTTP/1.1" 200 2934
+440 -- 2022-02-10 19:28:49,347 -- DEBUG -- Finished Request
+388 -- 2022-02-10 19:28:49,347 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/execute/sync {"script": "arguments[0].scrollIntoView();", "args": [{"ELEMENT": "e16bcc3d-aeef-4a4d-a167-24171e77c706", "element-6066-11e4-a52e-4f735466cecf": "e16bcc3d-aeef-4a4d-a167-24171e77c706"}]}
+393 -- 2022-02-10 19:28:49,363 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/execute/sync HTTP/1.1" 200 14
+440 -- 2022-02-10 19:28:49,363 -- DEBUG -- Finished Request
+388 -- 2022-02-10 19:28:54,366 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/element/dbd5be7c-9326-4e4d-b9d1-e1ef1e58eb30/elements {"using": "xpath", "value": "//div[contains(@class,'oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb btwxx1t3 abiwlrkh p8dawk7l lzcic4wl ue3kfks5 pw54ja7n uo3d90p7 l82x9zwi a8c37x1j')]", "id": "dbd5be7c-9326-4e4d-b9d1-e1ef1e58eb30"}
+393 -- 2022-02-10 19:28:54,398 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/element/dbd5be7c-9326-4e4d-b9d1-e1ef1e58eb30/elements HTTP/1.1" 200 2934
+440 -- 2022-02-10 19:28:54,398 -- DEBUG -- Finished Request
+388 -- 2022-02-10 19:28:54,398 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/execute/sync {"script": "arguments[0].scrollIntoView();", "args": [{"ELEMENT": "e16bcc3d-aeef-4a4d-a167-24171e77c706", "element-6066-11e4-a52e-4f735466cecf": "e16bcc3d-aeef-4a4d-a167-24171e77c706"}]}
+393 -- 2022-02-10 19:28:54,414 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/execute/sync HTTP/1.1" 200 14
+440 -- 2022-02-10 19:28:54,414 -- DEBUG -- Finished Request
+388 -- 2022-02-10 19:28:59,435 -- DEBUG -- POST http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/element/dbd5be7c-9326-4e4d-b9d1-e1ef1e58eb30/elements {"using": "xpath", "value": "//div[contains(@class,'oajrlxb2 gs1a9yip g5ia77u1 mtkw9kbi tlpljxtp qensuy8j ppp5ayq2 goun2846 ccm00jje s44p3ltw mk2mc5f4 rt8b4zig n8ej3o3l agehan2d sk4xxmp2 rq0escxv nhd2j8a9 mg4g778l pfnyh3mw p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x tgvbjcpo hpfvmrgz jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso l9j0dhe7 i1ao9s8h esuyzwwr f1sip0of du4w35lb btwxx1t3 abiwlrkh p8dawk7l lzcic4wl ue3kfks5 pw54ja7n uo3d90p7 l82x9zwi a8c37x1j')]", "id": "dbd5be7c-9326-4e4d-b9d1-e1ef1e58eb30"}
+393 -- 2022-02-10 19:29:03,672 -- DEBUG -- http://127.0.0.1:49419 "POST /session/da3044a6a791addf3429a26f57e936ec/element/dbd5be7c-9326-4e4d-b9d1-e1ef1e58eb30/elements HTTP/1.1" 500 962
+440 -- 2022-02-10 19:29:03,672 -- DEBUG -- Finished Request
+429 -- 2022-02-10 19:29:03,672 -- WARNING -- Couldn't scroll the groups
+388 -- 2022-02-10 19:29:03,672 -- DEBUG -- DELETE http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec {}
+393 -- 2022-02-10 19:29:03,696 -- DEBUG -- http://127.0.0.1:49419 "DELETE /session/da3044a6a791addf3429a26f57e936ec HTTP/1.1" 200 14
+440 -- 2022-02-10 19:29:03,696 -- DEBUG -- Finished Request
+449 -- 2022-02-10 19:29:05,925 -- INFO -- Scrolling finished
+450 -- 2022-02-10 19:29:05,925 -- INFO -- 37 groups found, that are: 
+388 -- 2022-02-10 19:29:05,925 -- DEBUG -- GET http://127.0.0.1:49419/session/da3044a6a791addf3429a26f57e936ec/element/4ecf5886-0c0e-4213-b71d-95f0acbf1eb8/text {"id": "4ecf5886-0c0e-4213-b71d-95f0acbf1eb8"}
+242 -- 2022-02-10 19:29:05,925 -- DEBUG -- Resetting dropped connection: 127.0.0.1
+390 -- 2022-02-10 19:29:07,952 -- DEBUG -- Incremented Retry for (url='/session/da3044a6a791addf3429a26f57e936ec/element/4ecf5886-0c0e-4213-b71d-95f0acbf1eb8/text'): Retry(total=2, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-10 19:29:07,953 -- WARNING -- Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001951C71CD00>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/da3044a6a791addf3429a26f57e936ec/element/4ecf5886-0c0e-4213-b71d-95f0acbf1eb8/text
+206 -- 2022-02-10 19:29:07,954 -- DEBUG -- Starting new HTTP connection (2): 127.0.0.1
+390 -- 2022-02-10 19:29:09,978 -- DEBUG -- Incremented Retry for (url='/session/da3044a6a791addf3429a26f57e936ec/element/4ecf5886-0c0e-4213-b71d-95f0acbf1eb8/text'): Retry(total=1, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-10 19:29:09,978 -- WARNING -- Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001951C761CA0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/da3044a6a791addf3429a26f57e936ec/element/4ecf5886-0c0e-4213-b71d-95f0acbf1eb8/text
+206 -- 2022-02-10 19:29:09,978 -- DEBUG -- Starting new HTTP connection (3): 127.0.0.1
+390 -- 2022-02-10 19:29:12,037 -- DEBUG -- Incremented Retry for (url='/session/da3044a6a791addf3429a26f57e936ec/element/4ecf5886-0c0e-4213-b71d-95f0acbf1eb8/text'): Retry(total=0, connect=None, read=None, redirect=None, status=None)
+672 -- 2022-02-10 19:29:12,038 -- WARNING -- Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001951C761EE0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/da3044a6a791addf3429a26f57e936ec/element/4ecf5886-0c0e-4213-b71d-95f0acbf1eb8/text
+206 -- 2022-02-10 19:29:12,038 -- DEBUG -- Starting new HTTP connection (4): 127.0.0.1

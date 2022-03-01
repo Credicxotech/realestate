@@ -1,0 +1,11 @@
+proxy not wroking - 1001
+
+wrong cookie/login failed  - 701
+cookie addition - 702
+render cookies - 703
+
+button not found - 601
+button not clicked - 602
+
+blocked - 801
+page refresh - 802

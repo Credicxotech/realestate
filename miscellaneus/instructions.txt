@@ -1,0 +1,11 @@
+change chromedriver path 
+
+python to python3 vice-versa 
+
+sentry
+
+add remove ip from browser 
+
+add with open and start_time_first 
+
+add group names in logs and callback

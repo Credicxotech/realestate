@@ -1,0 +1,43 @@
+{
+    "flow": {
+      "uuid": "xxxxxxxxx",
+      "start_time": "sdadasd",
+      "end_time": "dsadd",
+      "used_ip": "1231",
+      "error": "none"
+    },
+    "trace_log": {
+      "steps": [
+        {
+          "start_time": "dsa",
+          "end_time": "dsa",
+          "action": "login",
+          "status": "success"
+        },
+        {
+          "start_time": "dsa",
+          "end_time": "dsa",
+          "action": "enter_page",
+          "status": "success"
+        },
+        {
+          "start_time": "dsa",
+          "end_time": "dsa",
+          "action": "open_post",
+          "status": "success"
+        }
+      ]
+    },
+    "groups": {
+      "group": [
+        {
+          "name": "dsa",
+          "url": "dsa"
+        },
+        {
+          "name": "dsa",
+          "url": "dsa"
+        }
+      ]
+    }
+  }
