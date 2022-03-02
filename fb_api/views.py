@@ -135,6 +135,7 @@ class Join_grp_api(CreateAPIView):
                    }
         return Response( context, status=status.HTTP_200_OK)
 
+import requests
 class GetCookies_api(CreateAPIView):
     serializer_class = GetCookiesSerializer
     def post(self, request, *args, **kwargs):
@@ -142,54 +143,64 @@ class GetCookies_api(CreateAPIView):
         username = self.request.POST['username']
         fb_password = self.request.POST['fb_password']
 
-        ip='127.0.0.1:22225'
+        ip='il.smartproxy.com:30002'
 
-        def get_browser():
-            # HEADLESS = False
-            HEADLESS = True
-            sleep(2)
-            chrome_options = Options()
-            if HEADLESS:
-                chrome_options.add_argument('--headless')
-                chrome_options.add_argument('--no-sandbox')
-            chrome_options.add_argument('--disable-dev-shm-usage')
-            chrome_options.add_argument('--log-level=3')
-            chrome_options.add_argument("--start-maximized")
-            chrome_options.add_argument("--disable-gpu")
-            try:
-                chrome_options.add_argument("--proxy-server={}".format(ip))
-            except:
-                print("Proxy error, may be wrong port")
-            chrome_options.add_argument("--disable-notifications")
-            browser = webdriver.Chrome(executable_path= r"/usr/bin/chromedriver" ,options=chrome_options)
-            # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
-            return browser
-                
-        def get_cookies(browser):
-            url = 'https://www.facebook.com/'
-            browser.get(url)
-            sleep(10)
-            browser.find_element_by_xpath('//*[@data-testid="royal_email"]').send_keys(username)
-            sleep(5)
-            browser.find_element_by_xpath('//*[@data-testid="royal_pass"]').send_keys(fb_password)
-            sleep(4)
+        if api_password != '12345asdf':
+            print("Wrong password")
+            ("Wrong password")
+            data_ = {"Error":"Wrong password"}
+            r = requests.post('https://blubee.app/api/execution-info', json=data_)
+            print("Wrong password")
+            print("Data is",data_,"\n")
 
-            browser.find_element_by_xpath('//*[@data-testid="royal_login_button"]').click()
-            sleep(1)
+        else:
+            def get_browser():
+                # HEADLESS = False
+                HEADLESS = True
+                sleep(2)
+                chrome_options = Options()
+                if HEADLESS:
+                    chrome_options.add_argument('--headless')
+                    chrome_options.add_argument('--no-sandbox')
+                chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+                chrome_options.add_argument('--disable-dev-shm-usage')
+                chrome_options.add_argument('--log-level=3')
+                chrome_options.add_argument("--start-maximized")
+                chrome_options.add_argument("--disable-gpu")
+                try:
+                    chrome_options.add_argument("--proxy-server={}".format(ip))
+                except:
+                    print("Proxy error, may be wrong port")
+                chrome_options.add_argument("--disable-notifications")
+                browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
+                # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
+                return browser
                     
-            pickle.dump(browser.get_cookies(),open(r"./cookies/zachaiosmyer_cooks.pkl","wb"))
-            print("Cookies Captured.......")
+            def get_cookies(browser):
+                url = 'https://www.facebook.com/'
+                browser.get(url)
+                sleep(10)
+                browser.find_element_by_xpath('//*[@data-testid="royal_email"]').send_keys(username)
+                sleep(5)
+                browser.find_element_by_xpath('//*[@data-testid="royal_pass"]').send_keys(fb_password)
+                sleep(4)
 
-            try:
-                browser.find_element_by_xpath('//*[@aria-label="Menu"]')
-                sleep(3)
-            except:
-                return Response({'Message':'Login was failed'}, status=status.HTTP_404_NOT_FOUND)
+                browser.find_element_by_xpath('//*[@data-testid="royal_login_button"]').click()
+                sleep(1)
+                        
+                pickle.dump(browser.get_cookies(),open(r"./cookies/zachaiosmyer_cooks.pkl","wb"))
+                print("Cookies Captured.......")
 
-        browser = get_browser()
-        browser.get('http://lumtest.com/myip.json')
-        sleep(4)
-        get_cookies(browser)
+                try:
+                    browser.find_element_by_xpath('//*[@aria-label="Menu"]')
+                    sleep(3)
+                except:
+                    return Response({'Message':'Login was failed'}, status=status.HTTP_404_NOT_FOUND)
+
+            browser = get_browser()
+            browser.get('http://lumtest.com/myip.json')
+            sleep(4)
+            get_cookies(browser)
         
         cookies = pickle.load(open(r"./cookies/zachaiosmyer_cooks.pkl","rb"))
         xs = cookies[1]['value']
