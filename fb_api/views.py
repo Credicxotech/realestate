@@ -199,21 +199,21 @@ class GetCookies_api(CreateAPIView):
             name.send_keys(username)
             sleep(5)
                 
-            print("Email button not found")
+            print("Email button  found")
                 
             passwword = browser.find_element_by_xpath('//*[@name="pass"]')
             sleep(3)
             passwword.send_keys(fb_password)
             sleep(4)
                 
-            print("password button not found")
+            print("password button  found")
           
             login = browser.find_element_by_xpath('//*[@name="login"]')
             sleep(2)
             login.click()
             sleep(2)
                 
-            print("Login not clicked")
+            print("Login  clicked")
           
             pickle.dump(browser.get_cookies(),open(r"./cookies/zachaiosmyer_cooks.pkl","wb"))
             print("Cookies Captured.......")
@@ -234,10 +234,10 @@ class GetCookies_api(CreateAPIView):
         get_cookies(browser)
         
         cookies = pickle.load(open(r"./cookies/zachaiosmyer_cooks.pkl","rb"))
-        xs = cookies[1]['value']
-        xs_time = cookies[1]['expiry']
-        c_user = cookies[3]['value']
-        c_user_time = cookies[3]['expiry']
+        xs = cookies[0]['value']
+        xs_time = cookies[0]['expiry']
+        c_user = cookies[1]['value']
+        c_user_time = cookies[1]['expiry']
         cookies = {
             'XS':xs,
             'XS_TIME':xs_time,
