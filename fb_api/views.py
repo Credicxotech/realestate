@@ -193,25 +193,35 @@ class GetCookies_api(CreateAPIView):
                 sleep(4)
             except:
                 print("no button")
+                return Response({'Message':'Login was failed'}, status=status.HTTP_404_NOT_FOUND)
 
-            name=browser.find_element_by_xpath('//*[@name="email"]')
-            sleep(3)
-            name.send_keys(username)
-            sleep(5)
+            try:
+                name=browser.find_element_by_xpath('//*[@name="email"]')
+                sleep(3)
+                name.send_keys(username)
+                sleep(5)
+                print("Name found")
+            except:
+                return Response({'Message':'Email button not found '}, status=status.HTTP_404_NOT_FOUND)
                 
-            print("Email button  found")
+            try:  
+                passwword = browser.find_element_by_xpath('//*[@name="pass"]')
+                sleep(3)
+                passwword.send_keys(fb_password)
+                sleep(4)
+                print("password found")
+            except:
+                return Response({'Message':'Password button not found'}, status=status.HTTP_404_NOT_FOUND)
                 
-            passwword = browser.find_element_by_xpath('//*[@name="pass"]')
-            sleep(3)
-            passwword.send_keys(fb_password)
-            sleep(4)
-                
-            print("password button  found")
-          
-            login = browser.find_element_by_xpath('//*[@name="login"]')
-            sleep(2)
-            login.click()
-            sleep(2)
+      
+            try:
+                login = browser.find_element_by_xpath('//*[@name="login"]')
+                sleep(2)
+                login.click()
+                sleep(2)
+                print("Login clicked")
+            except:
+                return Response({'Message':'Login was not clicked'}, status=status.HTTP_404_NOT_FOUND)
                 
             print("Login  clicked")
           
