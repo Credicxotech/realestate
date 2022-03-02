@@ -177,29 +177,49 @@ class GetCookies_api(CreateAPIView):
                 return browser
                     
             def get_cookies(browser):
-                url = 'https://www.facebook.com/'
-                browser.get(url)
-                sleep(10)
-                browser.find_element_by_xpath('//*[@data-testid="royal_email"]').send_keys(username)
-                sleep(5)
-                browser.find_element_by_xpath('//*[@data-testid="royal_pass"]').send_keys(fb_password)
-                sleep(4)
+                try:
+                    url = 'https://www.facebook.com/'
+                    browser.get(url)
+                    print("On FB page")
+                    sleep(10)
+                except:
+                    print("Page Fb not found")
+                
+                try:
+                    browser.find_element_by_xpath('//*[@data-testid="royal_email"]').send_keys(username)
+                    sleep(5)
+                except:
+                    print("Email button not found")
+                
+                try:
+                    browser.find_element_by_xpath('//*[@data-testid="royal_pass"]').send_keys(fb_password)
+                    sleep(4)
+                except:
+                    print("password button not found")
 
-                browser.find_element_by_xpath('//*[@data-testid="royal_login_button"]').click()
-                sleep(1)
+                try:        
+                    browser.find_element_by_xpath('//*[@data-testid="royal_login_button"]').click()
+                    sleep(2)
+                except:
+                    print("Login not clicked")
+
                         
                 pickle.dump(browser.get_cookies(),open(r"./cookies/zachaiosmyer_cooks.pkl","wb"))
                 print("Cookies Captured.......")
 
+                sleep(5)
                 try:
                     browser.find_element_by_xpath('//*[@aria-label="Menu"]')
                     sleep(3)
                 except:
+                    print("Menu not found")
                     return Response({'Message':'Login was failed'}, status=status.HTTP_404_NOT_FOUND)
 
             browser = get_browser()
             browser.get('http://lumtest.com/myip.json')
             sleep(4)
+            print(browser.page_source)
+            sleep(3)
             get_cookies(browser)
         
         cookies = pickle.load(open(r"./cookies/zachaiosmyer_cooks.pkl","rb"))
