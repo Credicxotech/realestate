@@ -103,8 +103,8 @@ sleep(3)
 
 
 def get_browser():
-    # HEADLESS = False
-    HEADLESS = True
+    HEADLESS = False
+    # HEADLESS = True
     ("Initiating Browser")
     sleep(2)
     chrome_options = Options()
@@ -121,8 +121,8 @@ def get_browser():
         critical("Proxy error, may be wrong port")
         print("Proxy error, may be wrong port")
     chrome_options.add_argument("--disable-notifications")
-    browser = webdriver.Chrome(executable_path= r"/usr/bin/chromedriver" ,options=chrome_options)
-    # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
+    # browser = webdriver.Chrome(executable_path= r"/usr/bin/chromedriver" ,options=chrome_options)
+    browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
     return browser
 
 def post_the_post(browser): 
