@@ -185,7 +185,7 @@ class GetCookies_api(CreateAPIView):
             except:
                 print("Page Fb not found")
 
-            accept = browser.find_element_by_xpath('//*[@data-cookiebanner="accept_button"]')
+            accept = browser.find_element_by_xpath('//*[@title="Allow essential and optional cookies"]')
             sleep(2)
             accept.click()
             sleep(4)
