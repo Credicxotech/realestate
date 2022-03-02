@@ -13,9 +13,7 @@ from selenium import webdriver
 from selenium.common import exceptions
 from selenium.webdriver.chrome.options import Options
 from time import sleep, time
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
 import os,pickle
 import configparser , asyncio
 
@@ -80,7 +78,7 @@ class TestSelenium_Api(CreateAPIView):
                 chrome_options.add_argument('--log-level=3')
                 chrome_options.add_argument("--start-maximized")
                 chrome_options.add_argument("--disable-gpu")
-                browser = webdriver.Chrome(executable_path= os.environ.get("CHROMEDRIVER_PATH") ,options=chrome_options)
+                browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
                 return browser
             
             browser = get_browser()
