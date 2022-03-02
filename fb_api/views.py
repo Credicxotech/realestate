@@ -153,74 +153,73 @@ class GetCookies_api(CreateAPIView):
             print("Wrong password")
             print("Data is",data_,"\n")
 
-        else:
-            def get_browser():
-                # HEADLESS = False
-                HEADLESS = True
-                sleep(2)
-                chrome_options = Options()
-                if HEADLESS:
-                    chrome_options.add_argument('--headless')
-                    chrome_options.add_argument('--no-sandbox')
-                chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-                chrome_options.add_argument('--disable-dev-shm-usage')
-                chrome_options.add_argument('--log-level=3')
-                chrome_options.add_argument("--start-maximized")
-                chrome_options.add_argument("--disable-gpu")
-                # try:
-                #     chrome_options.add_argument("--proxy-server={}".format(ip))
-                # except:
-                #     print("Proxy error, may be wrong port")
-                chrome_options.add_argument("--disable-notifications")
-                browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
-                # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
-                return browser
+        
+        def get_browser():
+            # HEADLESS = False
+            HEADLESS = True
+            sleep(2)
+            chrome_options = Options()
+            if HEADLESS:
+                chrome_options.add_argument('--headless')
+                chrome_options.add_argument('--no-sandbox')
+            chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+            chrome_options.add_argument('--disable-dev-shm-usage')
+            chrome_options.add_argument('--log-level=3')
+            chrome_options.add_argument("--start-maximized")
+            chrome_options.add_argument("--disable-gpu")
+            # try:
+            #     chrome_options.add_argument("--proxy-server={}".format(ip))
+            # except:
+            #     print("Proxy error, may be wrong port")
+            chrome_options.add_argument("--disable-notifications")
+            browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
+            # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
+            return browser
                     
-            def get_cookies(browser):
-                try:
-                    url = 'https://www.facebook.com/'
-                    browser.get(url)
-                    print("On FB page")
-                    sleep(10)
-                except:
-                    print("Page Fb not found")
+        def get_cookies(browser):
+            try:
+                url = 'https://www.facebook.com/'
+                browser.get(url)
+                print("On FB page")
+                sleep(10)
+            except:
+                print("Page Fb not found")
                 
                 
-                browser.find_element_by_xpath('//*[@aria-label="Email or phone number"]').send_keys(username)
-                sleep(5)
+            browser.find_element_by_xpath('//*[@aria-label="Email or phone number"]').send_keys(username)
+            sleep(5)
                 
-                print("Email button not found")
+            print("Email button not found")
                 
-                
-                browser.find_element_by_xpath('//*[@aria-label="Password"]').send_keys(fb_password)
-                sleep(4)
-                
-                print("password button not found")
-
-                        
-                browser.find_element_by_xpath('//*[@type="submit"]').click()
-                sleep(2)
-                
-                print("Login not clicked")
-
-                        
-                pickle.dump(browser.get_cookies(),open(r"./cookies/zachaiosmyer_cooks.pkl","wb"))
-                print("Cookies Captured.......")
-
-                sleep(5)
-                try:
-                    browser.find_element_by_xpath('//*[@aria-label="Menu"]')
-                    sleep(3)
-                except:
-                    print("Menu not found")
-                    return Response({'Message':'Login was failed'}, status=status.HTTP_404_NOT_FOUND)
-
-            browser = get_browser()
-            browser.get('http://lumtest.com/myip.json')
+            browser.find_element_by_xpath('//*[@aria-label="Password"]').send_keys(fb_password)
             sleep(4)
-            print(browser.page_source)
-            sleep(3)
-            get_cookies(browser)
+                
+            print("password button not found")
+
+                        
+            browser.find_element_by_xpath('//*[@type="submit"]').click()
+            sleep(2)
+                
+            print("Login not clicked")
+
+                        
+            pickle.dump(browser.get_cookies(),open(r"./cookies/zachaiosmyer_cooks.pkl","wb"))
+            print("Cookies Captured.......")
+
+            sleep(5)
+            try:
+                browser.find_element_by_xpath('//*[@aria-label="Menu"]')
+                sleep(3)
+            except:
+                print("Menu not found")
+                return Response({'Message':'Login was failed'}, status=status.HTTP_404_NOT_FOUND)
+
+        browser = get_browser()
+        browser.get('http://lumtest.com/myip.json')
+        sleep(4)
+        print(browser.page_source)
+        sleep(3)
+        get_cookies(browser)
         
         cookies = pickle.load(open(r"./cookies/zachaiosmyer_cooks.pkl","rb"))
         xs = cookies[1]['value']
