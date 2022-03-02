@@ -186,19 +186,19 @@ class GetCookies_api(CreateAPIView):
                     print("Page Fb not found")
                 
                 try:
-                    browser.find_element_by_xpath('//*[@data-testid="royal_email"]').send_keys(username)
+                    browser.find_element_by_xpath('//*[@aria-label="Email or phone number"]').send_keys(username)
                     sleep(5)
                 except:
                     print("Email button not found")
                 
                 try:
-                    browser.find_element_by_xpath('//*[@data-testid="royal_pass"]').send_keys(fb_password)
+                    browser.find_element_by_xpath('//*[@aria-label="Password"]').send_keys(fb_password)
                     sleep(4)
                 except:
                     print("password button not found")
 
                 try:        
-                    browser.find_element_by_xpath('//*[@data-testid="royal_login_button"]').click()
+                    browser.find_element_by_xpath('//*[@type="submit"]').click()
                     sleep(2)
                 except:
                     print("Login not clicked")
