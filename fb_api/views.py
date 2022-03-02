@@ -181,7 +181,8 @@ class GetCookies_api(CreateAPIView):
                 url = 'https://www.facebook.com/'
                 browser.get(url)
                 print("On FB page")
-                sleep(10)
+                sleep(8)
+                print(browser.page_source)
             except:
                 print("Page Fb not found")
 
@@ -192,7 +193,7 @@ class GetCookies_api(CreateAPIView):
                 sleep(4)
             except:
                 print("no button")
-                
+
             name=browser.find_element_by_xpath('//*[@name="email"]')
             sleep(3)
             name.send_keys(username)
