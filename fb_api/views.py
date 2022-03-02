@@ -143,7 +143,7 @@ class GetCookies_api(CreateAPIView):
         username = self.request.POST['username']
         fb_password = self.request.POST['fb_password']
 
-        ip='il.smartproxy.com:30002'
+        ip='il.smartproxy.com:30001'
 
         if api_password != '12345asdf':
             print("Wrong password")
