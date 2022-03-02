@@ -37,9 +37,11 @@ class Fb_Api(CreateAPIView):
         config_port = ip_port['port']
        
         if port=='':
-            IP = '127.0.0.1:{}'.format(config_port)
+            # IP = '127.0.0.1:{}'.format(config_port)
+            IP = 'il.smartproxy.com:{}'.format(config_port)
         else:
-            IP = '127.0.0.1:{}'.format(port)
+            # IP = '127.0.0.1:{}'.format(port)
+            IP = 'il.smartproxy.com:{}'.format(port)
 
         context = {
             'Status':'Successfull',

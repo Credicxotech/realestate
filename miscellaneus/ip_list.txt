@@ -1,0 +1,10 @@
+il.smartproxy.com:30001
+il.smartproxy.com:30002
+il.smartproxy.com:30003
+il.smartproxy.com:30004
+il.smartproxy.com:30005
+il.smartproxy.com:30006
+il.smartproxy.com:30007
+il.smartproxy.com:30008
+il.smartproxy.com:30009
+il.smartproxy.com:30010
