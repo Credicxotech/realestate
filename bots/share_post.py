@@ -103,26 +103,27 @@ sleep(3)
 
 
 def get_browser():
-    HEADLESS = False
-    # HEADLESS = True
+    # HEADLESS = False
+    HEADLESS = True
     ("Initiating Browser")
     sleep(2)
     chrome_options = Options()
     if HEADLESS:
         chrome_options.add_argument('--headless')
         chrome_options.add_argument('--no-sandbox')
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.add_argument('--log-level=3')
     chrome_options.add_argument("--start-maximized")
     chrome_options.add_argument("--disable-gpu")
     try:
-        chrome_options.add_argument("--proxy-server=%s" % ip)
+        chrome_options.add_argument("--proxy-server={}".format(ip) )
     except:
         critical("Proxy error, may be wrong port")
         print("Proxy error, may be wrong port")
     chrome_options.add_argument("--disable-notifications")
-    # browser = webdriver.Chrome(executable_path= r"/usr/bin/chromedriver" ,options=chrome_options)
-    browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
+    browser = webdriver.Chrome(executable_path= os.environ.get("CHROMEDRIVER_PATH") ,options=chrome_options)
+    # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
     return browser
 
 def post_the_post(browser): 
