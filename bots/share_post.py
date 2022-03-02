@@ -4,6 +4,7 @@ from time import sleep
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
 
 import random
 import sys 
@@ -122,7 +123,7 @@ def get_browser():
         critical("Proxy error, may be wrong port")
         print("Proxy error, may be wrong port")
     chrome_options.add_argument("--disable-notifications")
-    browser = webdriver.Chrome(executable_path= os.environ.get("CHROMEDRIVER_PATH") ,options=chrome_options)
+    browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
     # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
     return browser
 
