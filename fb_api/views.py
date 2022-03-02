@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView
 
-from .serializers import GetCookiesSerializer, MyInputSerializer,JoinGrpSerializer
+from .serializers import GetCookiesSerializer, MyInputSerializer,JoinGrpSerializer, TestApiSerializer
 from .models import api_params,join_grp_api_params
 
 from selenium import webdriver
@@ -58,6 +58,46 @@ class Fb_Api(CreateAPIView):
             context2 = {'Status':'Failure', 'UUID': uuid}
             return Response( context2, status=status.HTTP_400_BAD_REQUEST)
         
+        return Response( context, status=status.HTTP_200_OK)
+
+class TestSelenium_Api(CreateAPIView):
+    serializer_class = TestApiSerializer
+    def post(self, request, *args, **kwargs):
+        url = self.request.POST['url']
+
+        try:
+            def get_browser():
+                # HEADLESS = False
+                HEADLESS = True
+                ("Initiating Browser")
+                sleep(2)
+                chrome_options = Options()
+                if HEADLESS:
+                    chrome_options.add_argument('--headless')
+                    chrome_options.add_argument('--no-sandbox')
+                chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+                chrome_options.add_argument('--disable-dev-shm-usage')
+                chrome_options.add_argument('--log-level=3')
+                chrome_options.add_argument("--start-maximized")
+                chrome_options.add_argument("--disable-gpu")
+                browser = webdriver.Chrome(executable_path= os.environ.get("CHROMEDRIVER_PATH") ,options=chrome_options)
+                return browser
+            
+            browser = get_browser()
+            browser.get(url)
+            sleep(5)
+            pagesource = browser.page_source
+
+            context = {
+                'Status':'Successfull',
+                'Result': pagesource
+                    }
+        except:
+            context = {
+                'Status':'Successfull',
+                'Result': "Chromedriver was not found"
+                    }
+
         return Response( context, status=status.HTTP_200_OK)
 
 class Join_grp_api(CreateAPIView):

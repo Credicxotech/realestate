@@ -27,5 +27,6 @@ class get_cookies_api_params(models.Model):
     username = models.CharField(max_length=200,default=None)
     fb_password = models.CharField(max_length=200,default=None)  
 
-
+class Testing_api(models.Model):
+    url = models.CharField(max_length=50, null=False,default=None)
     
