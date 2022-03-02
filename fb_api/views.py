@@ -185,23 +185,23 @@ class GetCookies_api(CreateAPIView):
                 except:
                     print("Page Fb not found")
                 
-                try:
-                    browser.find_element_by_xpath('//*[@aria-label="Email or phone number"]').send_keys(username)
-                    sleep(5)
-                except:
-                    print("Email button not found")
                 
-                try:
-                    browser.find_element_by_xpath('//*[@aria-label="Password"]').send_keys(fb_password)
-                    sleep(4)
-                except:
-                    print("password button not found")
+                browser.find_element_by_xpath('//*[@aria-label="Email or phone number"]').send_keys(username)
+                sleep(5)
+                
+                print("Email button not found")
+                
+                
+                browser.find_element_by_xpath('//*[@aria-label="Password"]').send_keys(fb_password)
+                sleep(4)
+                
+                print("password button not found")
 
-                try:        
-                    browser.find_element_by_xpath('//*[@type="submit"]').click()
-                    sleep(2)
-                except:
-                    print("Login not clicked")
+                        
+                browser.find_element_by_xpath('//*[@type="submit"]').click()
+                sleep(2)
+                
+                print("Login not clicked")
 
                         
                 pickle.dump(browser.get_cookies(),open(r"./cookies/zachaiosmyer_cooks.pkl","wb"))
