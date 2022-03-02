@@ -48,8 +48,8 @@ class Fb_Api(CreateAPIView):
         try:
             def post_share_via_url(): 
                 # os.system("python " + "test_share.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP)
-                os.system("python " + "./bots/share_post.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP)
-                # os.system("python3 " + "./bots/share_post.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP)
+                # os.system("python " + "./bots/share_post.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP)
+                os.system("python3 " + "./bots/share_post.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP)
             post_share_via_url()
 
         except:
