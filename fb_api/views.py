@@ -167,10 +167,10 @@ class GetCookies_api(CreateAPIView):
                 chrome_options.add_argument('--log-level=3')
                 chrome_options.add_argument("--start-maximized")
                 chrome_options.add_argument("--disable-gpu")
-                try:
-                    chrome_options.add_argument("--proxy-server={}".format(ip))
-                except:
-                    print("Proxy error, may be wrong port")
+                # try:
+                #     chrome_options.add_argument("--proxy-server={}".format(ip))
+                # except:
+                #     print("Proxy error, may be wrong port")
                 chrome_options.add_argument("--disable-notifications")
                 browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
                 # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
