@@ -191,8 +191,9 @@ class GetCookies_api(CreateAPIView):
                 sleep(2)
                 accept.click()
                 sleep(4)
+                print("Accept button found")
             except:
-                print("no button")
+                print("No accept button")
                 return Response({'Message':'Login was failed'}, status=status.HTTP_404_NOT_FOUND)
 
             try:
@@ -202,6 +203,7 @@ class GetCookies_api(CreateAPIView):
                 sleep(5)
                 print("Name found")
             except:
+                print("Name not found")
                 return Response({'Message':'Email button not found '}, status=status.HTTP_404_NOT_FOUND)
                 
             try:  
@@ -211,6 +213,7 @@ class GetCookies_api(CreateAPIView):
                 sleep(4)
                 print("password found")
             except:
+                print("Password not found")
                 return Response({'Message':'Password button not found'}, status=status.HTTP_404_NOT_FOUND)
                 
       
@@ -221,6 +224,7 @@ class GetCookies_api(CreateAPIView):
                 sleep(2)
                 print("Login clicked")
             except:
+                print("Login not clicked")
                 return Response({'Message':'Login was not clicked'}, status=status.HTTP_404_NOT_FOUND)
                 
             print("Login  clicked")
@@ -236,7 +240,7 @@ class GetCookies_api(CreateAPIView):
                 print("Menu not found")
                 return Response({'Message':'Login was failed'}, status=status.HTTP_404_NOT_FOUND)
             return cookies
-            
+
         browser = get_browser()
         browser.get('http://lumtest.com/myip.json')
         sleep(4)
