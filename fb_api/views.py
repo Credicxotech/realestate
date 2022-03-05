@@ -182,7 +182,7 @@ class GetCookies_api(CreateAPIView):
                 browser.get(url)
                 print("On FB page")
                 sleep(8)
-                print(browser.page_source)
+                # print(browser.page_source)
             except:
                 print("Page Fb not found")
 
@@ -244,10 +244,10 @@ class GetCookies_api(CreateAPIView):
         get_cookies(browser)
         
         cookies = pickle.load(open(r"./cookies/zachaiosmyer_cooks.pkl","rb"))
-        xs = cookies[0]['value']
-        xs_time = cookies[0]['expiry']
-        c_user = cookies[1]['value']
-        c_user_time = cookies[1]['expiry']
+        xs = cookies[1]['value']
+        xs_time = cookies[1]['expiry']
+        c_user = cookies[3]['value']
+        c_user_time = cookies[3]['expiry']
         cookies = {
             'XS':xs,
             'XS_TIME':xs_time,
