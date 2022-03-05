@@ -224,10 +224,10 @@ class GetCookies_api(CreateAPIView):
                 return Response({'Message':'Login was not clicked'}, status=status.HTTP_404_NOT_FOUND)
                 
             print("Login  clicked")
-          
-            pickle.dump(browser.get_cookies(),open(r"./cookies/zachaiosmyer_cooks.pkl","wb"))
-            print("Cookies Captured.......")
 
+            cookies = browser.get_cookies()
+            print("Cookies Captured.......")
+          
             sleep(5)
             try:
                 browser.find_element_by_xpath('//*[@aria-label="Menu"]')
@@ -235,15 +235,15 @@ class GetCookies_api(CreateAPIView):
             except:
                 print("Menu not found")
                 return Response({'Message':'Login was failed'}, status=status.HTTP_404_NOT_FOUND)
-
+            return cookies
+            
         browser = get_browser()
         browser.get('http://lumtest.com/myip.json')
         sleep(4)
         print(browser.page_source)
         sleep(3)
-        get_cookies(browser)
+        cookies = get_cookies(browser)
         
-        cookies = pickle.load(open(r"./cookies/zachaiosmyer_cooks.pkl","rb"))
         xs = cookies[1]['value']
         xs_time = cookies[1]['expiry']
         c_user = cookies[3]['value']
