@@ -117,12 +117,12 @@ def get_browser():
     chrome_options.add_argument('--log-level=3')
     chrome_options.add_argument("--start-maximized")
     chrome_options.add_argument("--disable-gpu")
-    try:
-        chrome_options.add_argument("--proxy-server={}".format(ip) )
-    except:
-        critical("Proxy error, may be wrong port")
-        print("Proxy error, may be wrong port")
-    chrome_options.add_argument("--disable-notifications")
+    # try:
+    #     chrome_options.add_argument("--proxy-server={}".format(ip) )
+    # except:
+    #     critical("Proxy error, may be wrong port")
+    #     print("Proxy error, may be wrong port")
+    # chrome_options.add_argument("--disable-notifications")
     browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
     # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
     return browser
