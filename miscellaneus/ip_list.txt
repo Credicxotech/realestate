@@ -8,3 +8,14 @@ il.smartproxy.com:30007
 il.smartproxy.com:30008
 il.smartproxy.com:30009
 il.smartproxy.com:30010
+
+il.smartproxy.com:30001:user-blubee-sessionduration-30:!blu134679
+il.smartproxy.com:30002:user-blubee-sessionduration-30:!blu134679
+il.smartproxy.com:30003:user-blubee-sessionduration-30:!blu134679
+il.smartproxy.com:30004:user-blubee-sessionduration-30:!blu134679
+il.smartproxy.com:30005:user-blubee-sessionduration-30:!blu134679
+il.smartproxy.com:30006:user-blubee-sessionduration-30:!blu134679
+il.smartproxy.com:30007:user-blubee-sessionduration-30:!blu134679
+il.smartproxy.com:30008:user-blubee-sessionduration-30:!blu134679
+il.smartproxy.com:30009:user-blubee-sessionduration-30:!blu134679
+il.smartproxy.com:30010:user-blubee-sessionduration-30:!blu134679

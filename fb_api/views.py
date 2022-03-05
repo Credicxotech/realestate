@@ -14,8 +14,8 @@ from selenium.common import exceptions
 from selenium.webdriver.chrome.options import Options
 from time import sleep, time
 from webdriver_manager.chrome import ChromeDriverManager
-import os,pickle
-import configparser , asyncio
+import os
+import configparser 
 
 class Fb_Api(CreateAPIView):
     serializer_class = MyInputSerializer
@@ -36,10 +36,10 @@ class Fb_Api(CreateAPIView):
        
         if port=='':
             # IP = '127.0.0.1:{}'.format(config_port)
-            IP = 'il.smartproxy.com:{}'.format(config_port)
+            IP = 'il.smartproxy.com:{}:user-blubee-sessionduration-30:!blu134679'.format(config_port)
         else:
             # IP = '127.0.0.1:{}'.format(port)
-            IP = 'il.smartproxy.com:{}'.format(port)
+            IP = 'il.smartproxy.com:{}:user-blubee-sessionduration-30:!blu134679'.format(port)
 
         context = {
             'Status':'Successfull',
@@ -62,7 +62,7 @@ class TestSelenium_Api(CreateAPIView):
     serializer_class = TestApiSerializer
     def post(self, request, *args, **kwargs):
         url = self.request.POST['url']
-
+        ip = 'il.smartproxy.com:30001:user-blubee-sessionduration-30:!blu134679'
         try:
             def get_browser():
                 # HEADLESS = False
@@ -78,6 +78,7 @@ class TestSelenium_Api(CreateAPIView):
                 chrome_options.add_argument('--log-level=3')
                 chrome_options.add_argument("--start-maximized")
                 chrome_options.add_argument("--disable-gpu")
+                chrome_options.add_argument("--proxy-server={}".format(ip))
                 browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
                 return browser
             
