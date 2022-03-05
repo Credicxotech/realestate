@@ -7,12 +7,11 @@ from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView
 
 from .serializers import GetCookiesSerializer, MyInputSerializer,JoinGrpSerializer, TestApiSerializer
-from .models import api_params,join_grp_api_params
 
 from selenium import webdriver
 from selenium.common import exceptions
 from selenium.webdriver.chrome.options import Options
-from time import sleep, time
+from time import sleep
 from webdriver_manager.chrome import ChromeDriverManager
 import os
 import configparser 
