@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
-from .extension import proxies
+from extension.extension import proxies
 
 import random
 import sys 
@@ -113,7 +113,6 @@ proxies_extension = proxies(username, password, endpoint, port)
 def get_browser():
     # HEADLESS = False
     HEADLESS = True
-    ("Initiating Browser")
     sleep(2)
     chrome_options = Options()
     if HEADLESS:

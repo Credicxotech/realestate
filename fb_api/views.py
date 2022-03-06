@@ -6,7 +6,6 @@ import datetime
 from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView
-from .extension import proxies
 
 from .serializers import GetCookiesSerializer, MyInputSerializer,JoinGrpSerializer, TestApiSerializer
 
@@ -15,6 +14,7 @@ from selenium.common import exceptions
 from selenium.webdriver.chrome.options import Options
 from time import sleep
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.proxy import Proxy, ProxyType
 import os
 import configparser 
 
@@ -56,11 +56,8 @@ class Fb_Api(CreateAPIView):
         
         return Response( context, status=status.HTTP_200_OK)
 
-username = 'blubee'
-password = '13467913'
 endpoint = 'il.smartproxy.com'
-port = '30001'
-proxies_extension = proxies(username, password, endpoint, port)
+port = '30002'
 
 class TestSelenium_Api(CreateAPIView):
     serializer_class = TestApiSerializer
@@ -70,32 +67,38 @@ class TestSelenium_Api(CreateAPIView):
             def get_browser():
                 # HEADLESS = False
                 HEADLESS = True
-                ("Initiating Browser")
                 sleep(2)
+                proxy = Proxy()
+                proxy.proxy_type = ProxyType.MANUAL
+                proxy.http_proxy = '{hostname}:{port}'.format(hostname = endpoint, port = port)
+                proxy.ssl_proxy = '{hostname}:{port}'.format(hostname = endpoint, port = port)
+                capabilities = webdriver.DesiredCapabilities.CHROME
+                proxy.add_to_capabilities(capabilities)
                 chrome_options = Options()
                 if HEADLESS:
                     chrome_options.add_argument('--headless')
                     chrome_options.add_argument('--no-sandbox')
-                chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
                 chrome_options.add_argument('--disable-dev-shm-usage')
                 chrome_options.add_argument('--log-level=3')
                 chrome_options.add_argument("--start-maximized")
                 chrome_options.add_argument("--disable-gpu")
-                chrome_options.add_extension(proxies_extension)
-                # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
+                # chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+                # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options,desired_capabilities=capabilities)
                 browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
                 return browser
             
+            
             browser = get_browser()
+               
             browser.get(url)
             sleep(5)
             pagesource = browser.page_source
             print(pagesource)
 
             context = {
-                'Status':'Successfull',
-                'Result': pagesource
-                    }
+                    'Status':'Successfull',
+                    'Result': pagesource
+                        }
         except:
             context = {
                 'Status':'Successfull',
@@ -171,7 +174,6 @@ class GetCookies_api(CreateAPIView):
             chrome_options.add_argument('--log-level=3')
             chrome_options.add_argument("--start-maximized")
             chrome_options.add_argument("--disable-gpu")
-            chrome_options.add_extension(proxies_extension)
             chrome_options.add_argument("--disable-notifications")
             browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
             # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
