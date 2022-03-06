@@ -6,7 +6,7 @@ import datetime
 from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView
-from extension import proxies
+from .extension import proxies
 
 from .serializers import GetCookiesSerializer, MyInputSerializer,JoinGrpSerializer, TestApiSerializer
 
@@ -82,6 +82,7 @@ class TestSelenium_Api(CreateAPIView):
                 chrome_options.add_argument("--start-maximized")
                 chrome_options.add_argument("--disable-gpu")
                 chrome_options.add_extension(proxies_extension)
+                # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
                 browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
                 return browser
             
@@ -89,6 +90,7 @@ class TestSelenium_Api(CreateAPIView):
             browser.get(url)
             sleep(5)
             pagesource = browser.page_source
+            print(pagesource)
 
             context = {
                 'Status':'Successfull',
