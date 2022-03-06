@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from time import sleep
 from webdriver_manager.chrome import ChromeDriverManager
+from extension import proxies
 import pickle
 
 def get_browser():

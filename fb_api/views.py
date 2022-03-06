@@ -1,3 +1,4 @@
+from distutils import extension
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.views import APIView 
@@ -5,6 +6,7 @@ import datetime
 from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView
+from extension import proxies
 
 from .serializers import GetCookiesSerializer, MyInputSerializer,JoinGrpSerializer, TestApiSerializer
 
@@ -34,11 +36,9 @@ class Fb_Api(CreateAPIView):
         config_port = ip_port['port']
        
         if port=='':
-            # IP = '127.0.0.1:{}'.format(config_port)
-            IP = 'il.smartproxy.com:{}:user-blubee-sessionduration-30:!blu134679'.format(config_port)
+            IP_proxy = 'il.smartproxy.com:{}:user-blubee-sessionduration-30:13467913'.format(config_port)
         else:
-            # IP = '127.0.0.1:{}'.format(port)
-            IP = 'il.smartproxy.com:{}:user-blubee-sessionduration-30:!blu134679'.format(port)
+            IP_proxy = 'il.smartproxy.com:{}:user-blubee-sessionduration-30:13467913'.format(port)
 
         context = {
             'Status':'Successfull',
@@ -46,9 +46,8 @@ class Fb_Api(CreateAPIView):
                    }
         try:
             def post_share_via_url(): 
-                # os.system("python " + "test_share.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP)
-                os.system("python " + "./bots/share_post.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP)
-                # os.system("python3 " + "./bots/share_post.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP)
+                os.system("python " + "./bots/share_post.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP_proxy + " " + port)
+                # os.system("python3 " + "./bots/share_post.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP_proxy + " " port)
             post_share_via_url()
 
         except:
@@ -57,11 +56,16 @@ class Fb_Api(CreateAPIView):
         
         return Response( context, status=status.HTTP_200_OK)
 
+username = 'blubee'
+password = '13467913'
+endpoint = 'il.smartproxy.com'
+port = '30001'
+proxies_extension = proxies(username, password, endpoint, port)
+
 class TestSelenium_Api(CreateAPIView):
     serializer_class = TestApiSerializer
     def post(self, request, *args, **kwargs):
         url = self.request.POST['url']
-        ip = 'il.smartproxy.com:30001:user-blubee-sessionduration-30:!blu134679'
         try:
             def get_browser():
                 # HEADLESS = False
@@ -77,7 +81,7 @@ class TestSelenium_Api(CreateAPIView):
                 chrome_options.add_argument('--log-level=3')
                 chrome_options.add_argument("--start-maximized")
                 chrome_options.add_argument("--disable-gpu")
-                chrome_options.add_argument("--proxy-server={}".format(ip))
+                chrome_options.add_extension(proxies_extension)
                 browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
                 return browser
             
@@ -117,14 +121,14 @@ class Join_grp_api(CreateAPIView):
         config_port = ip_port['port']
 
         if port=='':
-            IP = '127.0.0.1:{}'.format(config_port)
+            IP_proxy = 'il.smartproxy.com:{}:user-blubee-sessionduration-30:13467913'.format(config_port)
         else:
-            IP = '127.0.0.1:{}'.format(port)
-        print(IP)
+            IP_proxy = 'il.smartproxy.com:{}:user-blubee-sessionduration-30:13467913'.format(port)
+        print(IP_proxy)
 
         def join_groups():
-            # os.system("python " + "./bots/join_grp.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + grp_list_str + " " + password + " " + uuid + " " + IP + " " + user_id)
-            os.system("python3 " + "./bots/join_grp.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + grp_list_str + " " + password + " " + uuid + " " + IP + " " + user_id)
+            os.system("python " + "./bots/join_grp.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + grp_list_str + " " + password + " " + uuid + " " + IP_proxy + " " + user_id + " " + port)
+            # os.system("python3 " + "./bots/join_grp.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + grp_list_str + " " + password + " " + uuid + " " + IP_proxy + " " + user_id + " " + port)
 
         join_groups()
 
@@ -136,14 +140,13 @@ class Join_grp_api(CreateAPIView):
         return Response( context, status=status.HTTP_200_OK)
 
 import requests
+
 class GetCookies_api(CreateAPIView):
     serializer_class = GetCookiesSerializer
     def post(self, request, *args, **kwargs):
         api_password = self.request.POST['api_password']
         username = self.request.POST['username']
         fb_password = self.request.POST['fb_password']
-
-        ip='il.smartproxy.com:30001'
 
         if api_password != '12345asdf':
             print("Wrong password")
@@ -153,7 +156,6 @@ class GetCookies_api(CreateAPIView):
             print("Wrong password")
             print("Data is",data_,"\n")
 
-        
         def get_browser():
             # HEADLESS = False
             HEADLESS = True
@@ -167,10 +169,7 @@ class GetCookies_api(CreateAPIView):
             chrome_options.add_argument('--log-level=3')
             chrome_options.add_argument("--start-maximized")
             chrome_options.add_argument("--disable-gpu")
-            # try:
-            #     chrome_options.add_argument("--proxy-server={}".format(ip))
-            # except:
-            #     print("Proxy error, may be wrong port")
+            chrome_options.add_extension(proxies_extension)
             chrome_options.add_argument("--disable-notifications")
             browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
             # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)

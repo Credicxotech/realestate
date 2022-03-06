@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
+from extension import proxies
 
 import random
 import sys 
@@ -26,6 +27,7 @@ post_id = sys.argv[5]
 password = sys.argv[6]
 uuid = sys.argv[7]
 ip = sys.argv[8]
+port = sys.argv[9]
 
 #snetry-sdk work
 sentry_sdk.init("https://d61c7a6830b44dd9ae627e01d2c6d695@o425995.ingest.sentry.io/6138760", traces_sample_rate=1.0)
@@ -102,6 +104,11 @@ with open(r"./callback_json/share_post_callback.json",'w') as cb:
     json.dump(data,cb)
 sleep(3)
 
+username = 'blubee'
+password = '13467913'
+endpoint = 'il.smartproxy.com'
+port = port
+proxies_extension = proxies(username, password, endpoint, port)
 
 def get_browser():
     # HEADLESS = False
@@ -117,12 +124,7 @@ def get_browser():
     chrome_options.add_argument('--log-level=3')
     chrome_options.add_argument("--start-maximized")
     chrome_options.add_argument("--disable-gpu")
-    # try:
-    #     chrome_options.add_argument("--proxy-server={}".format(ip) )
-    # except:
-    #     critical("Proxy error, may be wrong port")
-    #     print("Proxy error, may be wrong port")
-    # chrome_options.add_argument("--disable-notifications")
+    chrome_options.add_extension(proxies_extension)
     browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
     # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
     return browser

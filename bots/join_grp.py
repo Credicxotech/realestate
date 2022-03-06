@@ -4,6 +4,8 @@ from time import sleep
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from extension import proxies
+from webdriver_manager.chrome import ChromeDriverManager
 
 import random
 import sys 
@@ -26,6 +28,7 @@ password = sys.argv[6]
 uuid = sys.argv[7]
 ip = sys.argv[8]
 user_id = sys.argv[9]
+port = sys.argv[10]
 
 #snetry-sdk work
 sentry_sdk.init("https://d61c7a6830b44dd9ae627e01d2c6d695@o425995.ingest.sentry.io/6138760", traces_sample_rate=1.0)
@@ -104,6 +107,12 @@ with open(r"./callback/join_group_callback.json",'w') as cb:
 
 sleep(3)
 
+username = 'blubee'
+password = '13467913'
+endpoint = 'il.smartproxy.com'
+port = port
+proxies_extension = proxies(username, password, endpoint, port)
+
 def get_browser():
     HEADLESS = True
     info("Initiating Browser")
@@ -112,17 +121,13 @@ def get_browser():
     if HEADLESS:
         chrome_options.add_argument('--headless')
         chrome_options.add_argument('--no-sandbox')
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.add_argument('--log-level=3')
     chrome_options.add_argument("--start-maximized")
     chrome_options.add_argument("--disable-gpu")
-    try:
-        chrome_options.add_argument("--proxy-server=%s" % ip)
-    except:
-        critical("Proxy error, may be wrong port")
-        print("Proxy error, may be wrong port")
-    chrome_options.add_argument("--disable-notifications")
-    browser = webdriver.Chrome(executable_path= r"/usr/bin/chromedriver" ,options=chrome_options)
+    chrome_options.add_extension(proxies_extension)
+    browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
     # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
     return browser
 
