@@ -13,8 +13,8 @@ from selenium import webdriver
 from selenium.common import exceptions
 from selenium.webdriver.chrome.options import Options
 from time import sleep
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.proxy import Proxy, ProxyType
+# from webdriver_manager.chrome import ChromeDriverManager
+
 import os
 import configparser 
 
@@ -34,11 +34,13 @@ class Fb_Api(CreateAPIView):
         config.read(r"./config_files/config_share_post.ini")
         ip_port = config['ip_port']
         config_port = ip_port['port']
+
+        
        
         if port=='':
-            IP_proxy = 'il.smartproxy.com:{}:user-blubee-sessionduration-30:13467913'.format(config_port)
+            IP_proxy = 'il.smartproxy.com:{}'.format(config_port)
         else:
-            IP_proxy = 'il.smartproxy.com:{}:user-blubee-sessionduration-30:13467913'.format(port)
+            IP_proxy = 'il.smartproxy.com:{}'.format(port)
 
         context = {
             'Status':'Successfull',
@@ -46,8 +48,8 @@ class Fb_Api(CreateAPIView):
                    }
         try:
             def post_share_via_url(): 
-                os.system("python " + "./bots/share_post.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP_proxy + " " + port)
-                # os.system("python3 " + "./bots/share_post.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP_proxy + " " port)
+                os.system("python " + "./bots/share_post.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP_proxy )
+                # os.system("python3 " + "./bots/share_post.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + post_id + " " + password + " " + uuid + " " + IP_proxy)
             post_share_via_url()
 
         except:
@@ -56,24 +58,18 @@ class Fb_Api(CreateAPIView):
         
         return Response( context, status=status.HTTP_200_OK)
 
-endpoint = 'il.smartproxy.com'
-port = '30002'
-
 class TestSelenium_Api(CreateAPIView):
     serializer_class = TestApiSerializer
     def post(self, request, *args, **kwargs):
         url = self.request.POST['url']
+
+        ip = 'il.smartproxy.com:30002'
+
         try:
             def get_browser():
                 # HEADLESS = False
                 HEADLESS = True
                 sleep(2)
-                proxy = Proxy()
-                proxy.proxy_type = ProxyType.MANUAL
-                proxy.http_proxy = '{hostname}:{port}'.format(hostname = endpoint, port = port)
-                proxy.ssl_proxy = '{hostname}:{port}'.format(hostname = endpoint, port = port)
-                capabilities = webdriver.DesiredCapabilities.CHROME
-                proxy.add_to_capabilities(capabilities)
                 chrome_options = Options()
                 if HEADLESS:
                     chrome_options.add_argument('--headless')
@@ -82,12 +78,11 @@ class TestSelenium_Api(CreateAPIView):
                 chrome_options.add_argument('--log-level=3')
                 chrome_options.add_argument("--start-maximized")
                 chrome_options.add_argument("--disable-gpu")
-                # chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+                chrome_options.add_argument("--proxy-server={}".format(ip))               
                 # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options,desired_capabilities=capabilities)
-                browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
+                browser = webdriver.Chrome(executable_path= r"/usr/bin/chromedriver" ,options=chrome_options)
                 return browser
-            
-            
+
             browser = get_browser()
                
             browser.get(url)
@@ -169,13 +164,12 @@ class GetCookies_api(CreateAPIView):
             if HEADLESS:
                 chrome_options.add_argument('--headless')
                 chrome_options.add_argument('--no-sandbox')
-            chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
             chrome_options.add_argument('--disable-dev-shm-usage')
             chrome_options.add_argument('--log-level=3')
             chrome_options.add_argument("--start-maximized")
             chrome_options.add_argument("--disable-gpu")
             chrome_options.add_argument("--disable-notifications")
-            browser = webdriver.Chrome(executable_path= ChromeDriverManager().install() ,options=chrome_options)
+            browser = webdriver.Chrome(executable_path= r"/usr/bin/chromedriver",options=chrome_options)
             # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
             return browser
                     
