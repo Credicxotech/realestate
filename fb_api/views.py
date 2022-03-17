@@ -147,6 +147,8 @@ class GetCookies_api(CreateAPIView):
         api_password = self.request.POST['api_password']
         username = self.request.POST['username']
         fb_password = self.request.POST['fb_password']
+        
+        ip = 'il.smartproxy.com:30002'
 
         if api_password != '12345asdf':
             print("Wrong password")
@@ -168,6 +170,7 @@ class GetCookies_api(CreateAPIView):
             chrome_options.add_argument('--log-level=3')
             chrome_options.add_argument("--start-maximized")
             chrome_options.add_argument("--disable-gpu")
+            chrome_options.add_argument("--proxy-server={}".format(ip))
             chrome_options.add_argument("--disable-notifications")
             browser = webdriver.Chrome(executable_path= r"/usr/bin/chromedriver",options=chrome_options)
             # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
