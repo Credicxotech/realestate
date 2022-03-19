@@ -1,16 +1,11 @@
-from distutils import extension
-from django.shortcuts import render
+from random import randint
 from rest_framework import status
-from rest_framework.views import APIView 
-import datetime  
-from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView
 
 from .serializers import GetCookiesSerializer, MyInputSerializer,JoinGrpSerializer, TestApiSerializer
 
 from selenium import webdriver
-from selenium.common import exceptions
 from selenium.webdriver.chrome.options import Options
 from time import sleep
 # from webdriver_manager.chrome import ChromeDriverManager
@@ -61,7 +56,9 @@ class TestSelenium_Api(CreateAPIView):
     def post(self, request, *args, **kwargs):
         url = self.request.POST['url']
 
-        ip = 'il.smartproxy.com:30020'
+        ip_port = randint(30001,30100)
+
+        ip = 'il.smartproxy.com:{}'.format(ip_port)
 
         try:
             def get_browser():
@@ -90,6 +87,7 @@ class TestSelenium_Api(CreateAPIView):
 
             context = {
                     'Status':'Successfull',
+                    'Proxy Used': ip,
                     'Result': pagesource
                         }
         except:
