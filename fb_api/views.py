@@ -35,8 +35,6 @@ class Fb_Api(CreateAPIView):
         ip_port = config['ip_port']
         config_port = ip_port['port']
 
-        
-       
         if port=='':
             IP_proxy = 'il.smartproxy.com:{}'.format(config_port)
         else:
@@ -121,14 +119,13 @@ class Join_grp_api(CreateAPIView):
         config_port = ip_port['port']
 
         if port=='':
-            IP_proxy = 'il.smartproxy.com:{}:user-blubee-sessionduration-30:13467913'.format(config_port)
+            IP_proxy = 'il.smartproxy.com:{}'.format(config_port)
         else:
-            IP_proxy = 'il.smartproxy.com:{}:user-blubee-sessionduration-30:13467913'.format(port)
-        print(IP_proxy)
+            IP_proxy = 'il.smartproxy.com:{}'.format(port)
 
         def join_groups():
-            os.system("python " + "./bots/join_grp.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + grp_list_str + " " + password + " " + uuid + " " + IP_proxy + " " + user_id + " " + port)
-            # os.system("python3 " + "./bots/join_grp.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + grp_list_str + " " + password + " " + uuid + " " + IP_proxy + " " + user_id + " " + port)
+            os.system("python " + "./bots/join_grp.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + grp_list_str + " " + password + " " + uuid + " " + IP_proxy + " " + user_id )
+            # os.system("python3 " + "./bots/join_grp.py " + xs_time + " " +  c_user_time + " " + xs + " " + c_user + " " + grp_list_str + " " + password + " " + uuid + " " + IP_proxy + " " + user_id)
 
         join_groups()
 
@@ -247,11 +244,14 @@ class GetCookies_api(CreateAPIView):
         print(browser.page_source)
         sleep(3)
         cookies = get_cookies(browser)
+        for cooks in cookies:
+            if cooks['name'] =='xs' or cooks['name'] == 'c_user':
+                xs = cooks['value']
+                xs_time = cooks['expiry']
+                c_user = cooks['value']
+                c_user_time = cooks['expiry']
+
         
-        xs = cookies[1]['value']
-        xs_time = cookies[1]['expiry']
-        c_user = cookies[3]['value']
-        c_user_time = cookies[3]['expiry']
         cookies = {
             'XS':xs,
             'XS_TIME':xs_time,
