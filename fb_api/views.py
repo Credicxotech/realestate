@@ -61,7 +61,7 @@ class TestSelenium_Api(CreateAPIView):
     def post(self, request, *args, **kwargs):
         url = self.request.POST['url']
 
-        ip = 'il.smartproxy.com:30002'
+        ip = 'il.smartproxy.com:30020'
 
         try:
             def get_browser():
