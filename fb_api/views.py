@@ -168,7 +168,7 @@ class GetCookies_api(CreateAPIView):
             chrome_options.add_argument("--start-maximized")
             chrome_options.add_argument("--disable-gpu")
             chrome_options.add_argument("--disable-notifications")
-            chrome_options.add_argument("--proxy-server={}".format(ip))
+            # chrome_options.add_argument("--proxy-server={}".format(ip))
             browser = webdriver.Chrome(executable_path= r"/usr/bin/chromedriver",options=chrome_options)
             # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
             return browser
