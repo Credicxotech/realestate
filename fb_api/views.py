@@ -168,7 +168,7 @@ class GetCookies_api(CreateAPIView):
             chrome_options.add_argument("--start-maximized")
             chrome_options.add_argument("--disable-gpu")
             chrome_options.add_argument("--disable-notifications")
-            # chrome_options.add_argument("--proxy-server={}".format(ip))
+            chrome_options.add_argument("--proxy-server={}".format(ip))
             browser = webdriver.Chrome(executable_path= r"/usr/bin/chromedriver",options=chrome_options)
             # browser = webdriver.Chrome(executable_path= r"C:\Program Files (x86)\chromedriver.exe" ,options=chrome_options)
             return browser
@@ -183,15 +183,15 @@ class GetCookies_api(CreateAPIView):
             except:
                 print("Page Fb not found")
 
-            try:
-                accept = browser.find_element_by_xpath('//*[@title="Allow essential and optional cookies"]')
-                sleep(2)
-                accept.click()
-                sleep(4)
-                print("Accept button found")
-            except:
-                print("No accept button")
-                return Response({'Message':'Login was failed'}, status=status.HTTP_404_NOT_FOUND)
+            # try:
+            #     accept = browser.find_element_by_xpath('//*[@title="Allow essential and optional cookies"]')
+            #     sleep(2)
+            #     accept.click()
+            #     sleep(4)
+            #     print("Accept button found")
+            # except:
+            #     print("No accept button")
+            #     return Response({'Message':'Login was failed'}, status=status.HTTP_404_NOT_FOUND)
 
             try:
                 name=browser.find_element_by_xpath('//*[@name="email"]')
