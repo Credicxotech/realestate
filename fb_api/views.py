@@ -246,12 +246,14 @@ class GetCookies_api(CreateAPIView):
         cookies = get_cookies(browser)
 
         for cooks in cookies:
-            if cooks['name'] =='xs' or cooks['name'] == 'c_user':
+            if cooks['name'] =='xs':
                 xs = cooks['value']
                 xs_time = cooks['expiry']
+            elif cooks['name'] == 'c_user':
                 c_user = cooks['value']
                 c_user_time = cooks['expiry']
-
+            else:
+                pass
         
         cookies = {
             'XS':xs,
